@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Currency Symbol Formatter</title>
+</head>
+<body>
+
+  <h1>Currency Symbol Formatter</h1>
+
+  <label for="amount">Enter Amount:</label>
+  <input type="number" id="amount" step="0.01"><br><br>
+
+  <label for="currency">Enter Currency Code (e.g., USD, INR, EUR):</label>
+  <input type="text" id="currency"><br><br>
+
+  <button onclick="handleFormat()">Format Currency</button>
+
+  <h2 id="output"></h2>
+
+  <script>
+    function getCurrencySymbol(currencyCode) {
+      const symbols = {
+        USD: '$',
+        EUR: '€',
+        INR: '₹',
+        GBP: '£',
+        JPY: '¥',
+        AUD: 'A$',
+        CAD: 'C$'
+      };
+      return symbols[currencyCode.toUpperCase()] || currencyCode.toUpperCase();
+    }
+
+    function handleFormat() {
+      const amount = document.getElementById('amount').value;
+      const currencyCode = document.getElementById('currency').value;
+
+      if (!amount || !currencyCode) {
+        document.getElementById('output').innerText = "Please enter both amount and currency code.";
+        return;
+      }
+
+      const symbol = getCurrencySymbol(currencyCode);
+      const formatted = `${symbol} ${amount}`;
+      document.getElementById('output').innerText = `Formatted Amount: ${formatted}`;
+    }
+  </script>
+
+</body>
+</html>

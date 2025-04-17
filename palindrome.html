@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Palindrome Finder</title>
+</head>
+<body>
+
+  <h2>Longest Palindrome</h2>
+
+  <input id="s" placeholder="Enter text">
+  <button onclick="f()">Find</button>
+
+  <p id="o"></p>
+
+  <script>
+    function f() {
+      let s = document.getElementById('s').value, r = "";
+      for (let i = 0; i < s.length; i++) {
+        for (let j = i; j < s.length; j++) {
+          let sub = s.substring(i, j + 1);
+          if (sub == sub.split('').reverse().join('') && sub.length > r.length)
+            r = sub;
+        }
+      }
+      document.getElementById('o').innerText = r ? "Longest: " + r : "No palindrome found.";
+    }
+  </script>
+
+</body>
+</html>

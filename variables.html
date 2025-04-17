@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Variable Scope Example</title>
+</head>
+<body>
+  <h3>Variable Scope in JavaScript</h3>
+
+  <button onclick="showGlobal()">Global Scope</button>
+  <button onclick="showLocal()">Local Scope</button>
+  <button onclick="showBlock()">Block Scope</button>
+  <button onclick="showShadow()">Variable Shadowing</button>
+
+  <p id="output"></p>
+
+  <script>
+    
+    let globalVar = "I am Global";
+
+    function showGlobal() {
+      document.getElementById('output').innerText = "Global Scope: " + globalVar;
+    }
+
+
+    function showLocal() {
+      let localVar = "I am Local";
+      document.getElementById('output').innerText = "Local Scope: " + localVar;
+    }
+
+   
+    function showBlock() {
+      if (true) {
+        let blockVar = "I am Block Scoped";
+        document.getElementById('output').innerText = "Block Scope: " + blockVar;
+      }
+    }
+
+    let name = "Global Name";
+    
+    function showShadow() {
+      name = "Local Name";
+      document.getElementById('output').innerText = "Shadowed Variable: " + name;
+    }
+    console.log(name)
+  </script>
+</body>
+</html>
